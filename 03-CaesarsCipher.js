@@ -10,13 +10,22 @@ All letters will be uppercase. Do not transform any non-alphabetic character (i.
 
 function rot13(str) {
   var alpha = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    //console.log(alpha.length);
-    for (var i = 0; i<str.lenght; i++) {
-      console.log(alpha.indexOf(str[i]))
-    }
-  return str;
+  var result = ""; 
+     for (var i = 0; i<str.length; i++) {
+      if (str[i] == " " || str[i] == "?" || str[i] == "!" || str[i] == ".") {
+        result += str[i]
+      }
+      else if (alpha.indexOf(str[i]) + 13 < 26) {
+        result += alpha[alpha.indexOf(str[i])+13]
+      } else if (alpha.indexOf(str[i]) + 13 >= 26) {
+        result += alpha[13 - (26 - alpha.indexOf(str[i]))]
+      } 
+
+
+      }
+      return result;
   }
   
-  rot13("SERR PBQR PNZC");
+  console.log(rot13("SERR PBQR PNZC"));
   
   
